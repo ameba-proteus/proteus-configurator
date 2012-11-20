@@ -13,7 +13,6 @@
 	},
 	"homepage": "https://github.com/ameba-proteus/proteus-configurator",
 	"dependencies": {
-		"commander": "*"
 	},
 	"devDependencies": {
 		"mocha": "*",
