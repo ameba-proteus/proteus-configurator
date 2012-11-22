@@ -9,7 +9,7 @@
 		"url": "https://github.com/ameba-proteus/proteus-configurator.git"
 	},
 	"publishConfig": {
-		"registry": "http://npm.pecolodge.com/"
+		"registry": "http://npm.pecolodge.com"
 	},
 	"homepage": "https://github.com/ameba-proteus/proteus-configurator",
 	"dependencies": {
