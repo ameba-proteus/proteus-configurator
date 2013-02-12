@@ -1,18 +1,17 @@
 {
-	"name": "proteus-configurator",
-	"version": "0.0.1",
-	"scripts": {
-		"test": "find test -type f -name 'test*.js' -print | xargs ./node_modules/.bin/mocha --reporter tap"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/ameba-proteus/proteus-configurator.git"
-	},
-	"homepage": "https://github.com/ameba-proteus/proteus-configurator",
-	"dependencies": {
-	},
-	"devDependencies": {
-		"mocha": "*",
-		"should": "*"
-	}
+  "name": "proteus-configurator",
+  "version": "0.1.0",
+  "scripts": {
+    "test": "find test -type f -name 'test*.js' -print | xargs ./node_modules/.bin/mocha --reporter tap"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ameba-proteus/proteus-configurator.git"
+  },
+  "homepage": "https://github.com/ameba-proteus/proteus-configurator",
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  }
 }
