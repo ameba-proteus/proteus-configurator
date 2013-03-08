@@ -1,6 +1,6 @@
 {
   "name": "proteus-configurator",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "scripts": {
     "test": "find test -type f -name 'test*.js' -print | xargs ./node_modules/.bin/mocha --reporter tap"
   },
