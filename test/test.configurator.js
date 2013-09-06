@@ -1,4 +1,4 @@
-
+/* global describe:true,it:tue,should:true */
 var config = require('../lib/configurator');
 
 describe('Configurator', function() {
@@ -7,9 +7,8 @@ describe('Configurator', function() {
 			config.configure('./test/config/test.json');
 		});
 		it('should fail if file does not exist', function() {
-			var error = null;
 			try {
-				configurator.configure('./test/config/not_exist.json');
+				config.configure('./test/config/not_exist.json');
 			} catch(e) {
 				return;
 			}
@@ -33,7 +32,7 @@ describe('Configurator', function() {
 				config.configure('./test/config/test2.json');
 			});
 		});
-		it('should load json structure', function() {
+		it('should merge json structure', function() {
 			config.test4.should.have.property('key1');
 			config.test4.key1.should.equal('value1');
 			config.test4.should.have.property('key2');
@@ -63,6 +62,10 @@ describe('Configurator', function() {
 			config.obj2.should.have.property('key2');
 			config.obj2.key1.should.equal('obj2key1');
 			config.obj2.key2.should.equal('obj2key2');
+		});
+		it('erase properties after resetting', function() {
+			config.reset();
+			Object.keys(config).should.be.empty;
 		});
 	});
 });
