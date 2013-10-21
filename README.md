@@ -1,57 +1,73 @@
 proteus-configurator
-==============================
+==========
 
-Proteus Configurator は、アプリケーションで適用される設定情報を一元管理します。
-Proteus Configurator を利用するライブラリは、設定情報の適用をトリガーとして
-設定処理を行うことができ、ライブラリ利用者の設定のタイミングの自由を与えることができます。
+Proteus Configurator make configuring application simple.
+
+# Feature
+
+- Configure with File/JSON/Function.
+- Merge multiple configurations.
 
 # Usage
 
-Configuratorは、アプリケーションスコープの設定ファイルを管理するための設定ユーティリティです。
-読み込んだ設定情報は、1つの設定オブジェクトにマージされます。
-
-## 設定の読込
-
 ```js
 var config = require('proteus-configurator');
-config.configure('conf/test.json');
-console.log(config.key1);
-```
 
-```js
-var config = require('proteus-configurator');
+// JSON parsing
+config.configure('path/to/config.json');
+
+// Pure Javascript object
 config.configure({
+  prop1: 'value1',
+  prop2: 'value2',
+  prop3: {
+    name1: 'value31',
+    name2: 'value32'
+  }
 });
 
-## 指定のキー配下への設定の読込
+// with require
+config.configure('/path/to/config.js');
 
-```js
-config.configure('config/test.json', 'dest');
-console.log(config.dest);
+// with function
+config.configure(function() {
+  this.prop1 = 'value1';
+  this.prop2 = {
+    name1: 'value21',
+    name2: 'value22'
+  };
+});
 ```
 
-## 設定ファイルの読込イベントを取得
-
 ```js
-config.on('key1', function(vars) {
-	console.log(vars);
-});
-config.configure('config/test.json', 'key1');
+var config = require('proteus-configuretor');
+config.configure(...);
+
+console.log(config.prop1);
+console.log(config.prop2);
 ```
 
 # License
 
-Copyright 2012 CyberAgent, Inc.
+The MIT License (MIT)
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+Copyright (c) 2013 CyberAgent, Inc.
 
-[http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
 
