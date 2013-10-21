@@ -24,30 +24,12 @@ describe('Configurator', function() {
 			config.test3.should.equal('value3');
 			config.should.not.have.property('test4');
 		});
-		it('should emit after load', function(done) {
-			config.on('test1', function() {
-				config.on('test4', function() {
-					done();
-				});
-				config.configure('./test/config/test2.json');
-			});
-		});
 		it('should merge json structure', function() {
+			config.configure('./test/config/test2.json');
 			config.test4.should.have.property('key1');
 			config.test4.key1.should.equal('value1');
 			config.test4.should.have.property('key2');
 			config.test4.key2.should.equal('value2');
-		});
-		it('should emit immediately if config exists', function(done) {
-			config.on('test1', function() {
-				config.on('test2', function() {
-					config.on('test3', function() {
-						config.on('test4', function() {
-							done();
-						});
-					});
-				});
-			});
 		});
 		it('can load object', function() {
 			config.configure({
@@ -62,6 +44,19 @@ describe('Configurator', function() {
 			config.obj2.should.have.property('key2');
 			config.obj2.key1.should.equal('obj2key1');
 			config.obj2.key2.should.equal('obj2key2');
+		});
+		it('can load with function', function() {
+			config.configure({
+				obj1: 'test1',
+				obj2: 'test2'
+			});
+			config.configure(function() {
+				this.obj2 = 'test22';
+				this.obj3 = 'test3';
+			});
+			config.obj1.should.equal('test1');
+			config.obj2.should.equal('test22');
+			config.obj3.should.equal('test3');
 		});
 		it('erase properties after resetting', function() {
 			config.reset();

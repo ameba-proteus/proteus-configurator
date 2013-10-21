@@ -13,10 +13,15 @@ Configuratorは、アプリケーションスコープの設定ファイルを�
 ## 設定の読込
 
 ```js
-var config = require('proteus').config;
+var config = require('proteus-configurator');
 config.configure('conf/test.json');
 console.log(config.key1);
 ```
+
+```js
+var config = require('proteus-configurator');
+config.configure({
+});
 
 ## 指定のキー配下への設定の読込
 
